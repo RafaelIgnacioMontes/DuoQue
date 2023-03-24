@@ -1,1 +1,1 @@
-# DuoQue
+# DuoQue FE
