@@ -1,0 +1,19 @@
+{
+  "development": {
+    "username": "rafa",
+    "password": "1234",
+    "database": "DuoQue",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "DuoQue",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "DuoQue",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
