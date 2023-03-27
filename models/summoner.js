@@ -13,14 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
+
       Summoner.belongsToMany(models.Summoner, {
+        as: 'friend',
         through: models.FriendList,
-        as: 'owner',
-        foreignKey: 'listOwnerId'
-      })
-      Summoner.belongsToMany(models.Summoner, {
-        through: models.FriendList,
-        as: 'friends',
         foreignKey: 'friendId'
       })
       Summoner.hasMany(models.Comment, {
@@ -48,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       puuid: DataTypes.STRING,
       profileIconId: DataTypes.INTEGER,
+      accountId: DataTypes.STRING,
       summonerName: {
         type: DataTypes.STRING,
         allownull: false,
@@ -60,12 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      friendId: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        unique: true,
-        defaultValue: UUIDV4
-      },
+
       summonerLevel: DataTypes.INTEGER,
       matchHistoryId: DataTypes.INTEGER
     },

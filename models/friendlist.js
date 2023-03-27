@@ -11,14 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   FriendList.init(
     {
-      listOwnerId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'summoners',
-          key: 'id'
-        }
-      },
       friendId: {
         type: DataTypes.INTEGER,
         references: {
@@ -27,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+
     {
       sequelize,
       modelName: 'FriendList',

@@ -16,11 +16,12 @@ Router.get(
   controller.getSummonerbyId
 )
 
-Router.put(
-  '/update/:summoner_id',
+Router.get(
+  '/FL/:summoner_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.updateFriendId
+  controller.getFriendList
 )
+Router.delete('/delete/:summoner_id', controller.deleteSummoner)
 
 module.exports = Router

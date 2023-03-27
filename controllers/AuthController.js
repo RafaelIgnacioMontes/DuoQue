@@ -1,4 +1,4 @@
-const { Summoner } = require('../models')
+const { Summoner, FriendList } = require('../models')
 const middleware = require('../middleware')
 
 const Register = async (req, res) => {

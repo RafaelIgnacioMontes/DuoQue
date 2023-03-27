@@ -1,30 +1,44 @@
-const { FriendList } = require('../models')
+const { FriendList, Summoner } = require('../models')
 
-const GetAllSummonerFriendsById = async (req, res) => {
+const addFriend = async (req, res) => {
   try {
-    summonerId = req.params.id
-    const friends = FriendList.FindAll({ where: { listOwnerId: summonerId } })
-    res.send(friends)
-  } catch (error) {
-    throw error
-  }
-}
-
-const AssignFriend = async (req, res) => {
-  try {
-    const { listOwnerId, friendId } = req.body
-    const addFriend = await FriendList.create({
-      listOwnerId: +listOwnerId,
-      friendId: +friendId
+    const { friendId } = req.body
+    const summonerId = req.params.summoner_id
+    const adding = await FriendList.create({
+      friendId: +friendId,
+      summonerId: +summonerId
     })
-    res.send(addFriend)
+    res.send(adding)
   } catch (error) {
     throw error
   }
 }
 
+const deleteFriend = async (req, res) => {
+  try {
+    const friendListId = req.params.friendList_id
+    await FriendList.destroy({
+      where: { id: friendListId }
+    })
+    res.send({
+      message: `Friend list with id of ${friendListId} has been deleted`
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
+const getAllLists = async (req, res) => {
+  try {
+    const response = await FriendList.findAll()
+    res.send(response)
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
-  GetAllSummonerFriendsById,
-  AssignFriend
+  addFriend,
+  deleteFriend,
+  getAllLists
 }

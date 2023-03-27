@@ -9,10 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      listOwnerId: {
+      summonerId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
+        allowNull: true,
+        reference: {
           model: 'summoners',
           key: 'id'
         }

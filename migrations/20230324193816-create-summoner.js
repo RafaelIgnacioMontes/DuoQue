@@ -28,6 +28,7 @@ module.exports = {
       },
       puuid: Sequelize.STRING,
       profileIconId: Sequelize.INTEGER,
+      accountId: Sequelize.STRING,
       summonerName: {
         type: Sequelize.STRING,
         allownull: false,
@@ -41,13 +42,7 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       summonerLevel: Sequelize.INTEGER,
-
       matchHistoryId: Sequelize.INTEGER,
-      friendId: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: UUIDV4
-      },
 
       createdAt: {
         allowNull: false,
