@@ -1,4 +1,5 @@
 const { Summoner, FriendList } = require('../models')
+const stringify = require('../utils')
 
 const getAllSummoners = async (req, res) => {
   try {
@@ -36,16 +37,18 @@ const deleteSummoner = async (req, res) => {
 
 const getFriendList = async (req, res) => {
   try {
-    let summonerId = +req.params.summoner_id
-    await Summoner.findByPk(summonerId, {
-      include: {
-        model: Summoner,
-        as: 'friend',
-        through: {
-          attributes: []
+    let summonerId = req.params.summoner_id
+    const friendLists = await Summoner.findAll({
+      include: [
+        {
+          model: Summoner,
+          as: 'friend',
+          through: { attributes: [] },
+          attributes: ['summonerName']
         }
-      }
+      ]
     })
+    res.send(friendLists)
   } catch (error) {
     throw error
   }

@@ -17,7 +17,7 @@ Router.get(
 )
 
 Router.get(
-  '/FL/:summoner_id',
+  '/FL',
   middleware.stripToken,
   middleware.verifyToken,
   controller.getFriendList

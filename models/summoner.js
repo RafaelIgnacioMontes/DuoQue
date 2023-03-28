@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Summoner.belongsToMany(models.Summoner, {
-        as: 'friend',
+        as: 'friends',
+        through: models.FriendList,
+        foreignKey: 'ownerId'
+      })
+      Summoner.belongsToMany(models.Summoner, {
+        as: 'summoners',
         through: models.FriendList,
         foreignKey: 'friendId'
       })

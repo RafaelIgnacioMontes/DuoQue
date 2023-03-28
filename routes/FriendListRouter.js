@@ -3,7 +3,7 @@ const middleware = require('../middleware')
 const controller = require('../controllers/FriendListController')
 
 Router.post(
-  '/addFriend/:summoner_id/:friendList_id',
+  '/addFriend/:summoner_id/:friend_id',
   middleware.stripToken,
   middleware.stripToken,
   controller.addFriend
