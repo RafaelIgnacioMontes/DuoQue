@@ -3,7 +3,7 @@ const middleware = require('../middleware')
 const controller = require('../controllers/FriendListController')
 
 Router.post(
-  '/addFriend/:summoner_id/:friend_id',
+  '/addFriend/:summonerId',
   middleware.stripToken,
   middleware.stripToken,
   controller.addFriend
@@ -15,6 +15,6 @@ Router.delete(
   controller.deleteFriend
 )
 
-Router.get('/all', controller.getAllLists)
+Router.get('/all/:summonerId', controller.getAllLists)
 
 module.exports = Router

@@ -1,5 +1,5 @@
 'use strict'
-const { Model, UUIDV4 } = require('sequelize')
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Summoner extends Model {
     /**
@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       Summoner.belongsToMany(models.Summoner, {
         as: 'friends',
         through: models.FriendList,
-        foreignKey: 'ownerId'
+        foreignKey: 'summonerId'
       })
       Summoner.belongsToMany(models.Summoner, {
-        as: 'summoners',
+        as: 'summoner',
         through: models.FriendList,
         foreignKey: 'friendId'
       })

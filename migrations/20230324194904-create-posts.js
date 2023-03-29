@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
-        reference: {
+        references: {
           model: 'summoners',
           key: 'id'
         }

@@ -1,6 +1,6 @@
 const Router = require('express').Router()
 const middleware = require('../middleware')
-const controller = require('../controllers/SummonerRouter')
+const controller = require('../controllers/SummonerController')
 
 Router.get(
   '/all',
@@ -17,10 +17,10 @@ Router.get(
 )
 
 Router.get(
-  '/FL',
+  '/FL/:summoner_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.getFriendList
+  controller.getFriendListOfOwner
 )
 Router.delete('/delete/:summoner_id', controller.deleteSummoner)
 

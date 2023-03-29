@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         field: 'summonerId',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
-        reference: {
+        references: {
           model: 'summoners',
           key: 'id'
         }

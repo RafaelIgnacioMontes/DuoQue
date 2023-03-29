@@ -9,14 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ownerId: {
+
+      summonerId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        reference: {
+        references: {
           model: 'summoners',
           key: 'id'
         }
       },
+
       friendId: {
         type: Sequelize.INTEGER,
         references: {
