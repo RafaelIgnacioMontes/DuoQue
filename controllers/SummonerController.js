@@ -1,4 +1,4 @@
-const { Summoner, FriendList } = require('../models')
+const { Summoner } = require('../models')
 const stringify = require('../utils')
 
 const getAllSummoners = async (req, res) => {
