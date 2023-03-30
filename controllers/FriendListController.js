@@ -2,7 +2,7 @@ const { FriendList, Summoner } = require('../models')
 
 const addFriend = async (req, res) => {
   try {
-    const { friendId, summonerId } = req.body
+    const { friendId, summonerId } = req.params
     const adding = await FriendList.create({
       summonerId: +summonerId,
       friendId: +friendId

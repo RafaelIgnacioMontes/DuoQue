@@ -1,5 +1,4 @@
 const { Summoner } = require('../models')
-const stringify = require('../utils')
 
 const getAllSummoners = async (req, res) => {
   try {
@@ -39,8 +38,8 @@ const getFriendListOfOwner = async (req, res) => {
   try {
     let summoner_id = req.params.summoner_id
     console.log(summoner_id, 'this is the summoner id')
-    const friendLists = await Summoner.findAll({
-      // where: { ownerId: summoner_id }
+    const friendLists = await Summoner.findByPk(summoner_id, {
+      // where: { ownerId: summoner_id },
       include: [
         {
           model: Summoner,
