@@ -20,7 +20,7 @@ const Nav = ({ summoner, handleLogOut }) => {
           <Link to="/Home" className="navelements">
             Home
           </Link>
-          <Link className="logout" to="/SignIn" onClick={handleLogOut}>
+          <Link className="logout" to="/" onClick={handleLogOut}>
             LogOut
           </Link>
         </div>

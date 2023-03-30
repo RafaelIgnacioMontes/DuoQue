@@ -19,7 +19,7 @@ const GetSummonerInfoOnSignUpAndUpdateSummoner = async (req, res) => {
   try {
     const { summonerName } = req.params
     const response = await axios.get(
-      `https:na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_KEY}`
+      `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_KEY}`
     )
 
     if (response !== false) {
@@ -28,6 +28,7 @@ const GetSummonerInfoOnSignUpAndUpdateSummoner = async (req, res) => {
         {
           puuid: response.data.puuid,
           profileIconId: response.data.profileIconId,
+          summonerName: response.data.name,
           summonerLevel: response.data.summonerLevel,
           accountId: response.data.accountId
         },

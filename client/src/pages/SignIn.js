@@ -22,7 +22,7 @@ const SignIn = ({ setSummoner }) => {
     navigate('/Home')
   }
   return (
-    <div className="signInPage">
+    <div className="signinpage">
       <form className="signinform" onSubmit={handleSubmit}>
         <h1>Sign In</h1>
         <div className="inputdiv">
@@ -52,7 +52,7 @@ const SignIn = ({ setSummoner }) => {
           >
             Login
           </button>
-          <Link to="/SingUp">Register</Link>
+          <Link to="/SignUp">Register</Link>
         </div>
       </form>
     </div>

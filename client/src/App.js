@@ -19,7 +19,8 @@ const App = () => {
   }
 
   const checkToken = async () => {
-    const summoner = await CheckSession(setSummoner(summoner))
+    const summoner = await CheckSession()
+    setSummoner(summoner)
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -28,7 +29,17 @@ const App = () => {
     }
   }, [])
 
-  useEffect(() => {}, [])
+  const GetNewSummonerInfo = async () => {
+    if (summoner !== null) {
+      const info = await Client.get(
+        `http://localhost:3001/server/riot/${summoner.summonerName}/update/${summoner.id}`
+      )
+    }
+  }
+
+  useEffect(() => {
+    GetNewSummonerInfo()
+  }, [])
 
   return (
     <div>
@@ -36,6 +47,10 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<SignIn setSummoner={setSummoner} />} />
+          <Route
+            path="/SignUp"
+            element={<SignUp GetNewSummonerInfo={GetNewSummonerInfo} />}
+          />
         </Routes>
       </main>
     </div>
