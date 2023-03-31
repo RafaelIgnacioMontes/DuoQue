@@ -14,7 +14,7 @@ const Nav = ({ summoner, handleLogOut }) => {
           </Link>
         </div>
         <div className="nonlogodivnav">
-          <Link to="/profile" className="navelements">
+          <Link to="/ProfilePage" className="navelements">
             Profile
           </Link>
           <Link to="/Home" className="navelements">

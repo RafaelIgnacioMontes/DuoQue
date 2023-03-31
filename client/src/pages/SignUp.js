@@ -25,7 +25,6 @@ const SignUp = ({ GetNewSummonerInfo }) => {
     })
     setFormValues(initialState)
     navigate('/')
-    GetNewSummonerInfo()
   }
 
   return (

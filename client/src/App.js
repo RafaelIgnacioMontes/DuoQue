@@ -8,11 +8,12 @@ import axios from 'axios'
 import Home from './pages/Home'
 import Nav from './components/Nav'
 import './App.css'
+import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
   const [summoner, setSummoner] = useState(null)
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
     setSummoner(null)
 
     localStorage.clear()
@@ -34,22 +35,32 @@ const App = () => {
       const info = await Client.get(
         `http://localhost:3001/server/riot/${summoner.summonerName}/update/${summoner.id}`
       )
+      console.log(info)
     }
   }
-
+  console.log(summoner)
   useEffect(() => {
     GetNewSummonerInfo()
   }, [])
 
   return (
     <div>
-      <Nav summoner={summoner} handleLogout={handleLogout} />
+      <Nav summoner={summoner} handleLogOut={handleLogOut} />
       <main>
         <Routes>
-          <Route path="/" element={<SignIn setSummoner={setSummoner} />} />
           <Route
-            path="/SignUp"
-            element={<SignUp GetNewSummonerInfo={GetNewSummonerInfo} />}
+            path="/"
+            element={
+              <SignIn
+                setSummoner={setSummoner}
+                GetNewSummonerInfo={GetNewSummonerInfo}
+              />
+            }
+          />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route
+            path="/Profile"
+            element={<ProfilePage summoner={summoner} />}
           />
         </Routes>
       </main>
