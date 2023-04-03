@@ -13,6 +13,8 @@ import ProfilePage from './pages/ProfilePage'
 const App = () => {
   const [summoner, setSummoner] = useState([])
 
+  let summonerId = summoner.id
+
   const [extendedSummonerInfo, setExtendedSummonerInfo] = useState({
     puuid: '',
     profileIconId: '',
@@ -21,7 +23,12 @@ const App = () => {
     accountId: ''
   })
 
-  const [summonerProfile, setSummonerProfile] = useState()
+  const [summonerProfile, setSummonerProfile] = useState({
+    summonerId,
+    preferedRole: '',
+    champions: '',
+    lookingFor: ''
+  })
 
   const handleLogOut = () => {
     setSummoner(null)
@@ -44,19 +51,16 @@ const App = () => {
     }
   }
   const GetSummonerProfile = async () => {
-    const response = await axios
-      .get(`http://localhost:3001/server/profileinfo/info/${summoner.id}`)
-      .then((response) => response.data)
-      .then((data) => {
-        setSummonerProfile(data)
-      })
+    const response = await axios.get(
+      `http://localhost:3001/server/profileinfo/info/${summoner.id}`
+    )
+
+    setSummonerProfile(response.data)
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      checkToken()
-    }
+    checkToken()
+    GetSummonerProfile()
   }, [])
 
   return (

@@ -3,18 +3,16 @@ import { useState } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
 
-const EditProfile = ({ summoner, GetSummonerInfo }) => {
-  const initialState = {
-    preferedRole: '',
-    champions: '',
-    lookingFor: ''
-  }
-
+const EditProfile = ({
+  summoner,
+  GetSummonerInfo,
+  profileInfo,
+  setProfileInfo
+}) => {
   let navigate = useNavigate()
-
-  const [profileInfo, setProfileInfo] = useState(initialState)
-
+  let summonerId = summoner.id
   const [updateProfile, setUpdateProfile] = useState({
+    summonerId,
     preferedRole: '',
     champions: '',
     lookingFor: ''
@@ -30,31 +28,20 @@ const EditProfile = ({ summoner, GetSummonerInfo }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.post(
-      `http://localhost:3001/server/profileinfo/info/${summoner.id}`,
+      `http://localhost:3001/server/profileinfo/create/info/${summonerId}`,
       profileInfo
     )
-    setProfileInfo(initialState)
+    setProfileInfo(profileInfo)
     GetSummonerInfo()
   }
 
-  const updateInfo = async (e) => {
-    e.preventDefault()
-    await Client.put(
-      `http://localhost:3001/server/profileinfo/update/${profileInfo.id}/user/${summoner.id}`,
-      updateProfile
-    )
-    GetSummonerInfo()
-  }
   return (
     <div className="greaterdivforform">
-      <form
-        className="editprofileform"
-        onSubmit={handleSubmit || handleChangeUpdate}
-      >
+      <form className="editprofileform" onSubmit={handleSubmit}>
         <div className="inputdivforpreferedrole">
           <div className="preferedrole">Roles:</div>
           <input
-            onChange={handleChange || handleChangeUpdate}
+            onChange={handleChange}
             name="preferedRole"
             type="text"
             value={profileInfo.preferedRole}
@@ -64,7 +51,7 @@ const EditProfile = ({ summoner, GetSummonerInfo }) => {
         <div className="inputdivforchampions">
           <label>Champions:</label>
           <input
-            onChange={handleChange || handleChangeUpdate}
+            onChange={handleChange}
             type="text"
             name="champions"
             value={profileInfo.champions}
@@ -74,7 +61,7 @@ const EditProfile = ({ summoner, GetSummonerInfo }) => {
         <div className="inputdivlookingFor">
           <label>Looking for:</label>
           <input
-            onChange={handleChange || handleChangeUpdate}
+            onChange={handleChange}
             type="text"
             name="lookingFor"
             value={profileInfo.lookingFor}
@@ -83,7 +70,6 @@ const EditProfile = ({ summoner, GetSummonerInfo }) => {
         </div>
         <div className="submitbutton">
           <button>Submit</button>
-          <button onClick={updateInfo}>Update</button>
         </div>
       </form>
     </div>

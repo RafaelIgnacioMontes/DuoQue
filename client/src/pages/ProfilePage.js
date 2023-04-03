@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import EditProfile from '../components/EditProfile'
 import axios from 'axios'
 import tier from '../images/tier-icons/gold_iii.png'
+import UpdateProfile from '../components/UpdateProfileInfo'
 
 const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
+  let summonerId = summoner.id
+
   const [rankInfo, setRankInfo] = useState({
     tier: '',
     rank: '',
@@ -12,7 +15,14 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
     losses: '',
     hotStreak: ''
   })
+  const initialState = {
+    summonerId,
+    preferedRole: '',
+    champions: '',
+    lookingFor: ''
+  }
 
+  const [profileInfo, setProfileInfo] = useState(initialState)
   console.log(summoner)
 
   const GetRankedInfo = async () => {
@@ -30,11 +40,6 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   //   const user = response.data
   // }
 
-  useEffect(() => {
-    if (summoner != false) {
-      GetSummonerProfile()
-    }
-  }, [])
   return (
     <div className="greaterprofilediv">
       <div>
@@ -74,7 +79,16 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
       <EditProfile
         summoner={summoner}
         GetSummonerProfile={GetSummonerProfile}
+        profileInfo={profileInfo}
+        setProfileInfo={setProfileInfo}
       />
+      <div>
+        <UpdateProfile
+          summoner={summoner}
+          summonerProfile={summonerProfile}
+          setProfileInfo={setProfileInfo}
+        />
+      </div>
     </div>
   )
 }
