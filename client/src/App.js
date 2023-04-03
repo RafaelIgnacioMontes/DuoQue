@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 import SignIn from './pages/SignIn'
@@ -9,11 +9,12 @@ import Home from './pages/Home'
 import Nav from './components/Nav'
 import './App.css'
 import ProfilePage from './pages/ProfilePage'
+import UpdateProfile from './components/UpdateProfileInfo'
+import EditProfile from './components/EditProfile'
 
 const App = () => {
-  const [summoner, setSummoner] = useState([])
-
-  let summonerId = summoner.id
+  let navigate = useNavigate()
+  const [summoner, setSummoner] = useState(null)
 
   const [extendedSummonerInfo, setExtendedSummonerInfo] = useState({
     puuid: '',
@@ -24,7 +25,7 @@ const App = () => {
   })
 
   const [summonerProfile, setSummonerProfile] = useState({
-    summonerId,
+    summonerId: '',
     preferedRole: '',
     champions: '',
     lookingFor: ''
@@ -33,7 +34,7 @@ const App = () => {
   const handleLogOut = () => {
     setSummoner(null)
 
-    localStorage.clear()
+    localStorage.clear('token')
   }
 
   const checkToken = async () => {
@@ -42,11 +43,10 @@ const App = () => {
   }
 
   const GetNewSummonerInfo = async (payload) => {
-    if (payload !== null) {
+    if (payload) {
       const info = await axios.put(
         `http://localhost:3001/server/riot/${payload.summonerName}/update/${payload.id}`
       )
-
       setExtendedSummonerInfo(info)
     }
   }
@@ -54,13 +54,24 @@ const App = () => {
     const response = await axios.get(
       `http://localhost:3001/server/profileinfo/info/${summoner.id}`
     )
-
+    console.log(response)
     setSummonerProfile(response.data)
+  }
+  const [friendList, setFriendList] = useState()
+
+  const getFriends = async () => {
+    let response = Client.get(
+      `http://localhost:3001/server/friendlist/all/${summoner.id}`
+    )
+    console.log(response)
   }
 
   useEffect(() => {
-    checkToken()
-    GetSummonerProfile()
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+      getFriends()
+    }
   }, [])
 
   return (
@@ -74,6 +85,7 @@ const App = () => {
               <SignIn
                 setSummoner={setSummoner}
                 GetNewSummonerInfo={GetNewSummonerInfo}
+                summoner={summoner}
               />
             }
           />
@@ -88,6 +100,12 @@ const App = () => {
                 summonerProfile={summonerProfile}
               />
             }
+          />
+          <Route
+            element={<UpdateProfile GetSummonerProfile={GetSummonerProfile} />}
+          />
+          <Route
+            element={<EditProfile GetNewSummoneProfile={GetSummonerProfile} />}
           />
           <Route path="/Home" element={<Home />} />
         </Routes>

@@ -2,7 +2,8 @@ const { FriendList, Summoner } = require('../models')
 
 const addFriend = async (req, res) => {
   try {
-    const { friendId, summonerId } = req.params
+    const summonerId = +req.params.summoner_id
+    const friendId = +req.params.friend_id
     const adding = await FriendList.create({
       summonerId: +summonerId,
       friendId: +friendId
@@ -29,7 +30,9 @@ const deleteFriend = async (req, res) => {
 
 const getAllLists = async (req, res) => {
   try {
-    const response = await FriendList.findAll()
+    const response = await FriendList.findAll({
+      where: { summonerId: req.params.summoner_id }
+    })
     res.send(response)
   } catch (error) {
     throw error

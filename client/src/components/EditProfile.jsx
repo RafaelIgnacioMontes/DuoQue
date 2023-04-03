@@ -1,18 +1,9 @@
-import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-import Client from '../services/api'
 
-const EditProfile = ({
-  summoner,
-  GetSummonerInfo,
-  profileInfo,
-  setProfileInfo
-}) => {
-  let navigate = useNavigate()
-  let summonerId = summoner.id
+const EditProfile = ({ summoner, profileInfo, setProfileInfo }) => {
   const [updateProfile, setUpdateProfile] = useState({
-    summonerId,
+    summonerId: summoner.id,
     preferedRole: '',
     champions: '',
     lookingFor: ''
@@ -22,17 +13,13 @@ const EditProfile = ({
     setProfileInfo({ ...profileInfo, [e.target.name]: e.target.value })
   }
 
-  const handleChangeUpdate = (e) => {
-    setUpdateProfile({ ...updateProfile, [e.target.name]: e.target.value })
-  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.post(
-      `http://localhost:3001/server/profileinfo/create/info/${summonerId}`,
+      `http://localhost:3001/server/profileinfo/create/info/${summoner.id}`,
       profileInfo
     )
-    setProfileInfo(profileInfo)
-    GetSummonerInfo()
+    setProfileInfo({ ...profileInfo })
   }
 
   return (

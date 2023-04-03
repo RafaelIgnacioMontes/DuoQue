@@ -3,7 +3,7 @@ import { SignInSummoner } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-const SignIn = ({ setSummoner, GetNewSummonerInfo }) => {
+const SignIn = ({ setSummoner, GetNewSummonerInfo, summoner }) => {
   let navigate = useNavigate()
 
   let initialState = { email: '', password: '' }
@@ -19,6 +19,7 @@ const SignIn = ({ setSummoner, GetNewSummonerInfo }) => {
     const payload = await SignInSummoner(formValues)
     setFormValues(initialState)
     setSummoner(payload)
+
     await GetNewSummonerInfo(payload)
     navigate('/Home')
   }

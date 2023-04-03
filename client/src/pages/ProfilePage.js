@@ -5,8 +5,6 @@ import tier from '../images/tier-icons/gold_iii.png'
 import UpdateProfile from '../components/UpdateProfileInfo'
 
 const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
-  let summonerId = summoner.id
-
   const [rankInfo, setRankInfo] = useState({
     tier: '',
     rank: '',
@@ -16,7 +14,6 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
     hotStreak: ''
   })
   const initialState = {
-    summonerId,
     preferedRole: '',
     champions: '',
     lookingFor: ''
@@ -39,7 +36,38 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   //   )
   //   const user = response.data
   // }
-
+  let profile
+  if (
+    profileInfo.preferedRole &&
+    profileInfo.champions &&
+    profileInfo.lookingFor
+  ) {
+    profile = (
+      <div>
+        <EditProfile
+          summoner={summoner}
+          profileInfo={profileInfo}
+          summonerProfile={summonerProfile}
+          setProfileInfo={setProfileInfo}
+        />
+      </div>
+    )
+  } else {
+    profile = (
+      <div>
+        <UpdateProfile
+          summoner={summoner}
+          summonerProfile={summonerProfile}
+          setProfileInfo={setProfileInfo}
+        />
+      </div>
+    )
+  }
+  useEffect(() => {
+    if (summoner != false) {
+      GetSummonerProfile()
+    }
+  }, [])
   return (
     <div className="greaterprofilediv">
       <div>
@@ -75,19 +103,7 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         <div className="lookingFor">
           Looking For: {summonerProfile?.lookingFor}
         </div>
-      </div>
-      <EditProfile
-        summoner={summoner}
-        GetSummonerProfile={GetSummonerProfile}
-        profileInfo={profileInfo}
-        setProfileInfo={setProfileInfo}
-      />
-      <div>
-        <UpdateProfile
-          summoner={summoner}
-          summonerProfile={summonerProfile}
-          setProfileInfo={setProfileInfo}
-        />
+        {profile}
       </div>
     </div>
   )

@@ -24,4 +24,6 @@ Router.get(
 )
 Router.delete('/delete/:summoner_id', controller.deleteSummoner)
 
+Router.get('/summoner/:summonerName', controller.getBySummonerName)
+
 module.exports = Router

@@ -59,9 +59,17 @@ const getFriendListOfOwner = async (req, res) => {
   }
 }
 
+const getBySummonerName = async (req, res) => {
+  const response = await Summoner.findAll({
+    where: { summonerName: req.params.summonerName }
+  })
+  res.send(response)
+}
+
 module.exports = {
   getAllSummoners,
   getSummonerbyId,
   deleteSummoner,
-  getFriendListOfOwner
+  getFriendListOfOwner,
+  getBySummonerName
 }

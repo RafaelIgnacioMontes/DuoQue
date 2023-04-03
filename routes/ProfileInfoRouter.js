@@ -9,10 +9,12 @@ Router.post('/create/info/:summoner_id', controller.NewInfo)
 Router.get('/all', controller.AllProfileInfo)
 
 Router.put(
-  '/update/:profileInfo_id/user/:summoner_id',
-  controller.updateProfileInfo,
+  '/update/user/:summoner_id',
   middleware.stripToken,
-  middleware.verifyToken
+  middleware.verifyToken,
+  controller.updateProfileInfo
 )
+
+Router.delete('/delete/:ProfileInfo_id', controller.deleteProfileInfo)
 
 module.exports = Router

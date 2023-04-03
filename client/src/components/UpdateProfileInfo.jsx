@@ -3,7 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
 
-const UpdateProfile = ({ summoner, summonerProfile }) => {
+const UpdateProfile = ({ summoner, summonerProfile, GetSummonerProfile }) => {
   const initialState = {
     preferedRole: '',
     champions: '',
@@ -11,19 +11,23 @@ const UpdateProfile = ({ summoner, summonerProfile }) => {
   }
 
   const [updateForm, setUpdateForm] = useState(initialState)
-  const handleChangeUpdate = (event) => {
+
+  const handleChange = (event) => {
     setUpdateForm({
       ...updateForm,
       [event.target.id]: event.target.value
     })
   }
-  console.log(summonerProfile)
+
   const handleSubmitUpdate = async (event) => {
     event.preventDefault()
+    console.log(summoner.id)
     await Client.put(
-      `http://localhost:3001/server/profileinfo/update/${summonerProfile.id}/user/${summoner.id}`,
+      `http://localhost:3001/server/profileinfo/update/user/${summoner.id}`,
       updateForm
     )
+
+    setUpdateForm(initialState)
   }
   return (
     <div className="greaterdivforform">
@@ -31,7 +35,7 @@ const UpdateProfile = ({ summoner, summonerProfile }) => {
         <div className="inputdivforpreferedrole">
           <div className="preferedrole">Roles:</div>
           <input
-            onChange={handleChangeUpdate}
+            onChange={handleChange}
             id="preferedRole"
             type="text"
             value={updateForm.preferedRole}
@@ -41,7 +45,7 @@ const UpdateProfile = ({ summoner, summonerProfile }) => {
         <div className="inputdivforchampions">
           <label>Champions:</label>
           <input
-            onChange={handleChangeUpdate}
+            onChange={handleChange}
             type="text"
             id="champions"
             value={updateForm.champions}
@@ -51,7 +55,7 @@ const UpdateProfile = ({ summoner, summonerProfile }) => {
         <div className="inputdivlookingFor">
           <label>Looking for:</label>
           <input
-            onChange={handleChangeUpdate}
+            onChange={handleChange}
             type="text"
             id="lookingFor"
             value={updateForm.lookingFor}
