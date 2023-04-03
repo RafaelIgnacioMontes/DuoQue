@@ -21,6 +21,8 @@ const App = () => {
     accountId: ''
   })
 
+  const [summonerProfile, setSummonerProfile] = useState()
+
   const handleLogOut = () => {
     setSummoner(null)
 
@@ -40,6 +42,14 @@ const App = () => {
 
       setExtendedSummonerInfo(info)
     }
+  }
+  const GetSummonerProfile = async () => {
+    const response = await axios
+      .get(`http://localhost:3001/server/profileinfo/info/${summoner.id}`)
+      .then((response) => response.data)
+      .then((data) => {
+        setSummonerProfile(data)
+      })
   }
 
   useEffect(() => {
@@ -70,6 +80,8 @@ const App = () => {
               <ProfilePage
                 summoner={summoner}
                 GetNewSummonerInfo={GetNewSummonerInfo}
+                GetSummonerProfile={GetSummonerProfile}
+                summonerProfile={summonerProfile}
               />
             }
           />

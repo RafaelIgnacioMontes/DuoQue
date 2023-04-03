@@ -3,11 +3,22 @@
 }
 body {
   margin: 0;
-  background-color: rgb(8, 38, 73);
+  background-color: rgb(6, 29, 56);
   color: aliceblue;
   font-family: 'Alkatra', cursive;
 }
-
+.profileinfogreater1 {
+  display: flex;
+  justify-content: center;
+}
+.profileinfogreater2 {
+  display: flex;
+  justify-content: center;
+}
+.profileinfogreater3 {
+  display: flex;
+  justify-content: center;
+}
 .logonosummoner {
   height: 4vw;
   padding-left: 10px;

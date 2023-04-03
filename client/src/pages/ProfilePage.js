@@ -3,7 +3,7 @@ import EditProfile from '../components/EditProfile'
 import axios from 'axios'
 import tier from '../images/tier-icons/gold_iii.png'
 
-const ProfilePage = ({ summoner }) => {
+const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   const [rankInfo, setRankInfo] = useState({
     tier: '',
     rank: '',
@@ -13,7 +13,7 @@ const ProfilePage = ({ summoner }) => {
     hotStreak: ''
   })
 
-  const [summonerProfile, setSummonerProfile] = useState()
+  console.log(summoner)
 
   const GetRankedInfo = async () => {
     if (summoner != false) {
@@ -30,16 +30,10 @@ const ProfilePage = ({ summoner }) => {
   //   const user = response.data
   // }
 
-  const GetSummonerProfile = async () => {
-    const response = await axios
-      .get(`http://localhost:3001/server/profileinfo/info/${summoner.id}`)
-      .then((response) => response.data)
-      .then((data) => {
-        setSummonerProfile(data)
-      })
-  }
   useEffect(() => {
-    GetSummonerProfile()
+    if (summoner) {
+      GetSummonerProfile(summonerProfile)
+    }
   }, [])
   return (
     <div className="greaterprofilediv">
@@ -64,8 +58,18 @@ const ProfilePage = ({ summoner }) => {
           Wins: {summoner?.wins} Losses: {summoner?.losses}
         </div>
       </div>
-      <div className="profileinfogreater">
-        <div className="prefredRole">{summonerProfile?.preferedRole}</div>
+      <div className="profileinfogreater1">
+        <div className="prefredRole">
+          Prefered Role:{summonerProfile?.preferedRole}
+        </div>
+      </div>
+      <div className="profileinfogreater2">
+        <div className="champion">Champions:{summonerProfile.champion}</div>
+      </div>
+      <div className="profileinfogreater3">
+        <div className="lookingFor">
+          Looking For:{summonerProfile.lookingFor}
+        </div>
       </div>
       <EditProfile summoner={summoner} />
     </div>
