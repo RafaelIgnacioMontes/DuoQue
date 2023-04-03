@@ -12,7 +12,6 @@ const getAllSummoners = async (req, res) => {
 const getSummonerbyId = async (req, res) => {
   try {
     let summonerId = +req.params.summoner_id
-    console.log(summonerId)
     const summoner = await Summoner.findByPk(summonerId, {
       where: { id: summonerId }
     })
@@ -37,7 +36,6 @@ const deleteSummoner = async (req, res) => {
 const getFriendListOfOwner = async (req, res) => {
   try {
     let summoner_id = req.params.summoner_id
-    console.log(summoner_id, 'this is the summoner id')
     const friendLists = await Summoner.findByPk(summoner_id, {
       // where: { ownerId: summoner_id },
       include: [

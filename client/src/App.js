@@ -11,7 +11,15 @@ import './App.css'
 import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
-  const [summoner, setSummoner] = useState(null)
+  const [summoner, setSummoner] = useState([])
+
+  const [extendedSummonerInfo, setExtendedSummonerInfo] = useState({
+    puuid: '',
+    profileIconId: '',
+    summonerName: '',
+    summonerLevel: '',
+    accountId: ''
+  })
 
   const handleLogOut = () => {
     setSummoner(null)
@@ -23,24 +31,22 @@ const App = () => {
     const summoner = await CheckSession()
     setSummoner(summoner)
   }
+
+  const GetNewSummonerInfo = async (payload) => {
+    if (payload !== null) {
+      const info = await axios.put(
+        `http://localhost:3001/server/riot/${payload.summonerName}/update/${payload.id}`
+      )
+
+      setExtendedSummonerInfo(info)
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
-  }, [])
-
-  const GetNewSummonerInfo = async () => {
-    if (summoner !== null) {
-      const info = await Client.get(
-        `http://localhost:3001/server/riot/${summoner.summonerName}/update/${summoner.id}`
-      )
-      console.log(info)
-    }
-  }
-  console.log(summoner)
-  useEffect(() => {
-    GetNewSummonerInfo()
   }, [])
 
   return (
@@ -59,8 +65,13 @@ const App = () => {
           />
           <Route path="/SignUp" element={<SignUp />} />
           <Route
-            path="/Profile"
-            element={<ProfilePage summoner={summoner} />}
+            path="/ProfilePage"
+            element={
+              <ProfilePage
+                summoner={summoner}
+                GetNewSummonerInfo={GetNewSummonerInfo}
+              />
+            }
           />
         </Routes>
       </main>

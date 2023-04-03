@@ -30,7 +30,20 @@ const Login = async (req, res) => {
     if (matched) {
       let payload = {
         id: summoner.id,
-        email: summoner.email
+        email: summoner.email,
+        puuid: summoner.puuid,
+        accountId: summoner.accountId,
+        summonerLevel: summoner.summonerLevel,
+        summonerName: summoner.summonerName,
+        matchHistoryId: summoner.matchHistoryId,
+        profileIconId: summoner.profileIconId,
+        summonerId: summoner.summonerId,
+        tier: summoner.tier,
+        rank: summoner.rank,
+        leaguePoints: summoner.leaguePoints,
+        wins: summoner.wins,
+        losses: summoner.losses,
+        hotStreak: summoner.hotStreak
       }
       let token = middleware.createToken(payload)
       return res.send({ summoner: payload, token })

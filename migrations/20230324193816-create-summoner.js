@@ -40,12 +40,32 @@ module.exports = {
       },
       tagLine: {
         type: Sequelize.STRING,
-        allownull: false,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
       summonerLevel: Sequelize.INTEGER,
       matchHistoryId: Sequelize.INTEGER,
+      summonerId: {
+        type: Sequelize.STRING
+      },
+      tier: {
+        type: Sequelize.STRING
+      },
+      rank: {
+        type: Sequelize.STRING
+      },
+      leaguePoints: {
+        type: Sequelize.INTEGER
+      },
+      wins: {
+        type: Sequelize.INTEGER
+      },
+      losses: {
+        type: Sequelize.INTEGER
+      },
+      hotStreak: {
+        type: Sequelize.BOOLEAN
+      },
 
       createdAt: {
         allowNull: false,

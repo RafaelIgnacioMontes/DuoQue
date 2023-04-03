@@ -29,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
+      Summoner.hasOne(models.ProfileInfo, {
+        foreignKey: 'summonerId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
     }
   }
   Summoner.init(
@@ -58,9 +63,29 @@ module.exports = (sequelize, DataTypes) => {
       },
       tagLine: {
         type: DataTypes.STRING,
-        allownull: false,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
+      },
+      summonerId: {
+        type: DataTypes.STRING
+      },
+      tier: {
+        type: DataTypes.STRING
+      },
+      rank: {
+        type: DataTypes.STRING
+      },
+      leaguePoints: {
+        type: DataTypes.INTEGER
+      },
+      wins: {
+        type: DataTypes.INTEGER
+      },
+      losses: {
+        type: DataTypes.INTEGER
+      },
+      hotStreak: {
+        type: DataTypes.BOOLEAN
       },
 
       summonerLevel: DataTypes.INTEGER,

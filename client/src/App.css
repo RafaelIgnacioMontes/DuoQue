@@ -3,15 +3,138 @@
 }
 body {
   margin: 0;
+  background-color: rgb(8, 38, 73);
+  color: aliceblue;
+  font-family: 'Alkatra', cursive;
 }
 
 .logonosummoner {
   height: 4vw;
   padding-left: 10px;
 }
+.logo {
+  height: 4vw;
+  padding-left: 10px;
+  justify-content: left;
+  display: flex;
+}
+.nonlogodivnavparent {
+  display: flex;
+  justify-content: right;
+}
+.nonlogodivnav {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+.navelements {
+  display: flex;
+  flex-direction: column;
+}
 
 .greaterdivnav {
   background-color: black;
   width: 100%;
   height: 4vw;
+  display: flex;
+  justify-content: right;
+}
+
+nav {
+  display: flex;
+  justify-content: right;
+}
+
+.inputdivforpreferedrole {
+  display: flex;
+  justify-content: center;
+}
+.inputdivforchampions {
+  display: flex;
+  justify-content: center;
+}
+
+.inputdivlookingFor {
+  display: flex;
+  justify-content: center;
+}
+.summonername {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.greaterprofilediv {
+  display: flex;
+  flex-direction: column;
+}
+.summonerInfo1 {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+.summonerInfo2 {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+.summonerInfo3 {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+.summonerInfo4 {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+.summonerInfodiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submitbutton {
+  display: flex;
+  justify-content: center;
+}
+
+.updateRank {
+  display: flex;
+  margin-top: 50px;
+  justify-content: right;
+}
+.summonernameparent {
+  display: flex;
+  justify-content: center;
+}
+.rankbutton {
+  display: flex;
+}
+
+button {
+  font-family: 'Marcellus SC', serif;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 5px 15px;
+  background: #1e2328;
+  color: #cdbe91;
+  box-shadow: inset 0 0 2px #000000;
+  border-image: linear-gradient(to bottom, #c8aa6d, #7a5c29);
+  border-image-slice: 1;
+  border-width: 2px;
+}
+
+button:hover {
+  text-shadow: 0 0 5px #ffffff80;
+  box-shadow: 0 0 8px 0 #ffffff50;
+  background: linear-gradient(to bottom, #1e2328, #433d2b);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+button:active {
+  text-shadow: none;
+  box-shadow: none;
+  color: #cdbe9130;
 }

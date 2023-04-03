@@ -9,11 +9,16 @@ Router.get(
   controller.GetSummoner
 )
 
-Router.get(
+Router.put(
   '/:summonerName/update/:summoner_id',
-  middleware.stripToken,
-  middleware.verifyToken,
+
   controller.GetSummonerInfoOnSignUpAndUpdateSummoner
 )
+
+Router.put('/:summonerId/update/rank/:summoner_id', controller.UpdateMoreInfo)
+
+// Router.get('/matchhistory/:puuid', controller.GetMatchHistory)
+
+// Router.get('/matches/:puuid', controller.GetMatches)
 
 module.exports = Router
