@@ -1,4 +1,4 @@
-const { Summoner } = require('../models')
+const { Summoner, SummonerInfo } = require('../models')
 
 const getAllSummoners = async (req, res) => {
   try {
@@ -13,7 +13,12 @@ const getSummonerbyId = async (req, res) => {
   try {
     let summonerId = +req.params.summoner_id
     const summoner = await Summoner.findByPk(summonerId, {
-      where: { id: summonerId }
+      where: { id: summonerId },
+      include: [
+        {
+          model: SummonerInfo
+        }
+      ]
     })
     res.send(summoner)
   } catch (error) {

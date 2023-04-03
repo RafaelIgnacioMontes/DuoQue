@@ -31,8 +31,8 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   // }
 
   useEffect(() => {
-    if (summoner) {
-      GetSummonerProfile(summonerProfile)
+    if (summoner != false) {
+      GetSummonerProfile()
     }
   }, [])
   return (
@@ -59,19 +59,22 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         </div>
       </div>
       <div className="profileinfogreater1">
-        <div className="prefredRole">
-          Prefered Role:{summonerProfile?.preferedRole}
+        <div className="preferedRole">
+          Prefered Role: {summonerProfile?.preferedRole}
         </div>
       </div>
       <div className="profileinfogreater2">
-        <div className="champion">Champions:{summonerProfile.champion}</div>
+        <div className="champions">Champions: {summonerProfile?.champions}</div>
       </div>
       <div className="profileinfogreater3">
         <div className="lookingFor">
-          Looking For:{summonerProfile.lookingFor}
+          Looking For: {summonerProfile?.lookingFor}
         </div>
       </div>
-      <EditProfile summoner={summoner} />
+      <EditProfile
+        summoner={summoner}
+        GetSummonerProfile={GetSummonerProfile}
+      />
     </div>
   )
 }
