@@ -20,24 +20,6 @@ const Search = ({ summoner }) => {
       `http://localhost:3001/server/friendlist/addFriend/${summonerId}/friend/${searchResults.id}`
     )
   }
-
-  let winloss
-  if (searchResults.wins && searchResults.losses) {
-    winloss = (
-      <div>
-        Wins: {searchResults.wins} Losses: {searchResults.losses}
-      </div>
-    )
-  }
-
-  console.log(searchQuery)
-  const SearchFunc = async () => {
-    let response = await axios.get(
-      `http://localhost:3001/server/summoner/summoner/${searchQuery}`
-    )
-    console.log(response.data[0])
-    setSearchResults(response.data[0])
-  }
   let tiery
   if (searchResults.tier === 'GOLD') {
     tiery = <img src={gold} />
@@ -50,6 +32,44 @@ const Search = ({ summoner }) => {
   } else if (searchResults.tier === 'PLATINUM') {
     tiery = <img src={plat} />
   }
+  let winloss
+  if (searchResults.wins && searchResults.losses) {
+    winloss = (
+      <div>
+        Wins: {searchResults.wins} Losses: {searchResults.losses}
+      </div>
+    )
+  }
+  let friends
+  if (searchResults.tier) {
+    friends = <button onClick={addFriend}>Add Friend</button>
+  }
+  let add
+  if (searchResults.tier) {
+    add = (
+      <div className="searchResults">
+        <div className="searchSummonerName">{searchResults.summonerName}</div>
+        <div className="searchSummonerLevel">
+          Summoner Level: {searchResults.summonerLevel}
+        </div>
+        <div className="searchRank">
+          {searchResults.tier} {searchResults.rank}
+        </div>
+        <div className="rankimage">{tiery}</div>
+        {winloss}
+        {friends}
+      </div>
+    )
+  }
+  console.log(searchQuery)
+  const SearchFunc = async () => {
+    let response = await axios.get(
+      `http://localhost:3001/server/summoner/summoner/${searchQuery}`
+    )
+    console.log(response.data[0])
+    setSearchResults(response.data[0])
+  }
+
   const handleChange = async (e) => {
     setSearchQuery(e.target.value)
   }
@@ -74,16 +94,7 @@ const Search = ({ summoner }) => {
           ></textarea>
           <button type="submit">Search</button>
         </form>
-      </div>
-      <div className="searchResults">
-        <div className="searchSummonerName">{searchResults.summonerName}</div>
-        <div className="">{searchResults.summonerLevel}</div>
-        <div>
-          {searchResults.tier} {searchResults.rank}
-        </div>
-        <div>{tiery}</div>
-        {winloss}
-        <button onClick={addFriend}>Add Friend</button>
+        {add}
       </div>
     </div>
   )

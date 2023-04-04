@@ -91,11 +91,11 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         <div className="summonernameparent">
           <header className="summonername">{summoner?.summonerName}</header>
         </div>
-        <div className="updateRank">
-          <button className="rankbutton" onClick={GetRankedInfo}>
-            Update Rank
-          </button>
-        </div>
+      </div>
+      <div className="updateRank">
+        <button className="rankbutton" onClick={GetRankedInfo}>
+          Update Rank
+        </button>
       </div>
       <div className="summonerInfodiv">
         <div className="summonerInfo1">{summoner?.level}</div>
@@ -107,18 +107,20 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         <div className="summonerInfo5">
           Wins: {summoner?.wins} Losses: {summoner?.losses}
         </div>
-      </div>
-      <div className="profileinfogreater1">
-        <div className="preferedRole">
-          Prefered Role: {summonerProfile?.preferedRole}
+        <div className="profileinfogreater1">
+          <div className="preferedRole">
+            Prefered Role: {summonerProfile?.preferedRole}
+          </div>
         </div>
-      </div>
-      <div className="profileinfogreater2">
-        <div className="champions">Champions: {summonerProfile?.champions}</div>
-      </div>
-      <div className="profileinfogreater3">
-        <div className="lookingFor">
-          Looking For: {summonerProfile?.lookingFor}
+        <div className="profileinfogreater2">
+          <div className="champions">
+            Champions: {summonerProfile?.champions}
+          </div>
+        </div>
+        <div className="profileinfogreater3">
+          <div className="lookingFor">
+            Looking For: {summonerProfile?.lookingFor}
+          </div>
         </div>
       </div>
       {profile}

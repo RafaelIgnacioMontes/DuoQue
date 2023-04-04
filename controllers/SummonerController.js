@@ -1,4 +1,4 @@
-const { Summoner, SummonerInfo } = require('../models')
+const { Summoner, ProfileInfo } = require('../models')
 
 const getAllSummoners = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const getSummonerbyId = async (req, res) => {
       where: { id: summonerId },
       include: [
         {
-          model: SummonerInfo
+          model: ProfileInfo
         }
       ]
     })
@@ -61,7 +61,12 @@ const getFriendListOfOwner = async (req, res) => {
 
 const getBySummonerName = async (req, res) => {
   const response = await Summoner.findAll({
-    where: { summonerName: req.params.summonerName }
+    where: { summonerName: req.params.summonerName },
+    include: [
+      {
+        model: ProfileInfo
+      }
+    ]
   })
   res.send(response)
 }

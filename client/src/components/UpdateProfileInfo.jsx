@@ -62,7 +62,7 @@ const UpdateProfile = ({ summoner, summonerProfile, GetSummonerProfile }) => {
             required
           />
         </div>
-        <div className="submitbutton">
+        <div className="submitbuttonprofile">
           <button type="submit">Update</button>
         </div>
       </form>

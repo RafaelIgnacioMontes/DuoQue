@@ -5,7 +5,10 @@ const FriendList = ({ summoner, friendList }) => {
   let summonerId = localStorage.getItem('summonerId')
 
   const deleteFriend = async (e) => {
-    await Client.delete(`/delete/${summonerId}/friend/${friendList.id}`)
+    console.log(e.target.id)
+    await Client.delete(
+      `http://localhost:3001/server/friendlist/delete/${summonerId}/friend/${e.target.id}`
+    )
   }
 
   return (
@@ -17,7 +20,14 @@ const FriendList = ({ summoner, friendList }) => {
             {friendList.map((friend) => (
               <div className="friendlist">
                 <div className="name">
-                  {friend.summonerName} <box onClick={deleteFriend}>[X]</box>
+                  {friend.summonerName}{' '}
+                  <button
+                    classname="deletebutton"
+                    id={friend.id}
+                    onClick={deleteFriend}
+                  >
+                    [X]
+                  </button>
                 </div>
                 <div className="level">{friend.summonerLevel}</div>
                 <div className="tier">

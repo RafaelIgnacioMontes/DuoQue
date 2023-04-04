@@ -28,6 +28,7 @@ const EditProfile = ({ summoner, profileInfo, setProfileInfo }) => {
         <div className="inputdivforpreferedrole">
           <div className="preferedrole">Roles:</div>
           <input
+            className="prefferedrolesinput"
             onChange={handleChange}
             name="preferedRole"
             type="text"
@@ -55,7 +56,7 @@ const EditProfile = ({ summoner, profileInfo, setProfileInfo }) => {
             required
           />
         </div>
-        <div className="submitbutton">
+        <div className="submitbuttonprofile">
           <button>Submit</button>
         </div>
       </form>
