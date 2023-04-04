@@ -43,7 +43,7 @@ const Nav = ({ summoner, handleLogOut }) => {
   )
   return (
     <header>
-      <nav>{summoner ? summonerOptions : defaultOptions}</nav>
+      <nav>{summoner  summonerOptions : defaultOptions}</nav>
     </header>
   )
 }
