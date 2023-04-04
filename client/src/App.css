@@ -251,13 +251,13 @@ nav {
   display: flex;
   margin: 10px;
   justify-content: center;
-  font-size: smaller;
+  font-size: larger;
   border-bottom-color: black;
   border-style: solid;
   border-top: none;
   border-left: none;
   border-right: none;
-  min-width: 220px;
+  min-width: 2px;
   text-align: center;
 }
 .summonerInfo3 {
