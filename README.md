@@ -46,7 +46,7 @@
 
 ### ![Summoner Profile](https://cdn.discordapp.com/attachments/1075524186853867702/1092867886068023316/image.png)
 
-###### About Page ![About Page]()
+###### Search function! ![Search](https://cdn.discordapp.com/attachments/1075524186853867702/1092868688811663452/image.png)
 
 ### **_Future Updates_**
 
