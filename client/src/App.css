@@ -94,13 +94,15 @@ body {
 }
 .logo {
   height: 4vw;
-  padding-left: 10px;
+  padding-right: 1600px;
   justify-content: left;
   display: flex;
 }
+
 .nonlogodivnavparent {
   display: flex;
   justify-content: right;
+  font-size: x-large;
 }
 .nonlogodivnav {
   display: flex;
@@ -110,6 +112,21 @@ body {
 .navelements {
   display: flex;
   flex-direction: column;
+}
+.greaterdivforform {
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.update {
+  display: flex;
+  justify-content: center;
+}
+.editprofileform {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 .greaterdivnav {
@@ -153,10 +170,15 @@ nav {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  font-size: xx-large;
+  margin-top: 50px;
+  background-color: transparent;
 }
 .greaterprofilediv {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  object-fit: cover;
 }
 .summonerInfo1 {
   display: flex;
@@ -182,6 +204,9 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  object-fit: cover;
+  /* max-width: fit-content; */
+  flex-wrap: wrap;
 }
 .submitbutton {
   display: flex;

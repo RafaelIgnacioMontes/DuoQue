@@ -71,7 +71,7 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
     )
   } else {
     profile = (
-      <div>
+      <div className="udpate">
         <UpdateProfile
           summoner={summoner}
           summonerProfile={summonerProfile}
@@ -120,8 +120,8 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         <div className="lookingFor">
           Looking For: {summonerProfile?.lookingFor}
         </div>
-        {profile}
       </div>
+      {profile}
     </div>
   )
 }
