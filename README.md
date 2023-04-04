@@ -44,7 +44,7 @@
 
 ###### Summoner Profile
 
-### ![Summoner Profile]()
+### ![Summoner Profile](https://cdn.discordapp.com/attachments/1075524186853867702/1092867886068023316/image.png)
 
 ###### About Page ![About Page]()
 
