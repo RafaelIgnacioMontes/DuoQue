@@ -23,7 +23,7 @@ const Search = ({ summoner }) => {
   let tiery
   if (searchResults.tier === 'GOLD') {
     tiery = <img src={gold} />
-  } else if (searchResults.tier === 'SILVER') {
+  } else if (searchResults.tier === 'ILVER') {
     tiery = <img src={silver} />
   } else if (searchResults.tier === 'BRONZE') {
     tiery = <img src={bronze} />
