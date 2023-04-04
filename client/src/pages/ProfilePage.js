@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import EditProfile from '../components/EditProfile'
 import axios from 'axios'
-import tier from '../images/tier-icons/gold_iii.png'
+import gold from '../images/tier-icons/gold_iii.png'
+import silver from '../images/tier-icons/silver_iii.png'
+import bronze from '../images/tier-icons/bronze_iii.png'
+import diamond from '../images/tier-icons/diamond_iii.png'
+import plat from '../images/tier-icons/platinum_iii.png'
 import UpdateProfile from '../components/UpdateProfileInfo'
 
 const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
@@ -30,6 +34,19 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
       setRankInfo(info.data)
     }
   }
+  let tiery
+  if (summoner.tier === 'GOLD') {
+    tiery = <img src={gold} />
+  } else if (summoner.tier === 'SILVER') {
+    tiery = <img src={silver} />
+  } else if (summoner.tier === 'BRONZE') {
+    tiery = <img src={bronze} />
+  } else if (summoner.tier === 'DIAMOND') {
+    tiery = <img src={diamond} />
+  } else if (summoner.tier === 'PLATINUM') {
+    tiery = <img src={plat} />
+  }
+
   // const GetRankFromApi = async () => {
   //   const response = await axios.get(
   //     `http://localhost:3001/server/riot/${summoner.summonerName}`
@@ -85,7 +102,7 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
         <div className="summonerInfo2">
           {summoner?.tier}: {summoner?.rank}
         </div>
-        <img src={tier} />
+        <>{tiery}</>
         <div className="summonerInfo4">LP:{summoner?.leaguePoints}</div>
         <div className="summonerInfo5">
           Wins: {summoner?.wins} Losses: {summoner?.losses}

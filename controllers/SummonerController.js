@@ -48,7 +48,7 @@ const getFriendListOfOwner = async (req, res) => {
           model: Summoner,
           as: 'friends',
           through: { attributes: [] },
-          attributes: ['summonerName', 'summonerLevel', 'rank', 'tier']
+          attributes: ['summonerName', 'summonerLevel', 'rank', 'tier', 'id']
         }
       ]
     })

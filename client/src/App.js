@@ -71,7 +71,6 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      console.log('gettingFriends')
       checkToken()
       getFriends()
     }
