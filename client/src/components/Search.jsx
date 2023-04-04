@@ -58,6 +58,9 @@ const Search = ({ summoner }) => {
         <div className="rankimage">{tiery}</div>
         {winloss}
         {friends}
+        <div>Prefered Roles: {searchResults.ProfileInfo.preferedRole}</div>
+        <div>Champions: {searchResults.ProfileInfo.champions}</div>
+        <div>Looking For: {searchResults.ProfileInfo.lookingFor}</div>
       </div>
     )
   }
