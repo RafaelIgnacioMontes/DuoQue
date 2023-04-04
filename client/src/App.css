@@ -251,7 +251,7 @@ nav {
   display: flex;
   margin: 10px;
   justify-content: center;
-  font-size: larger;
+  font-size: smaller;
   border-bottom-color: black;
   border-style: solid;
   border-top: none;
