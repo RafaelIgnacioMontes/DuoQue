@@ -1,4 +1,4 @@
-# DuoQue FE
+# DuoQue
 
 ---
 
