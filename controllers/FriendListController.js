@@ -16,12 +16,14 @@ const addFriend = async (req, res) => {
 
 const deleteFriend = async (req, res) => {
   try {
-    const friendListId = req.params.friendList_id
     await FriendList.destroy({
-      where: { id: friendListId }
+      where: {
+        summonerId: req.params.summoner_id,
+        friendId: req.params.friend_id
+      }
     })
     res.send({
-      message: `Friend list with id of ${friendListId} has been deleted`
+      message: `Friend has been deleted`
     })
   } catch (error) {
     throw error

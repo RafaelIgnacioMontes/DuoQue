@@ -22,6 +22,7 @@ Router.get(
   middleware.verifyToken,
   controller.getFriendListOfOwner
 )
+
 Router.delete('/delete/:summoner_id', controller.deleteSummoner)
 
 Router.get('/summoner/:summonerName', controller.getBySummonerName)

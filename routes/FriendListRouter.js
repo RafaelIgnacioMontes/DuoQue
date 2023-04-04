@@ -9,7 +9,7 @@ Router.post(
   controller.addFriend
 )
 Router.delete(
-  '/delete/:friendList_id',
+  '/delete/:summoner_id/friend/:friend_id',
   middleware.stripToken,
   middleware.stripToken,
   controller.deleteFriend
