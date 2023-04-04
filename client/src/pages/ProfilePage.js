@@ -6,7 +6,7 @@ import silver from '../images/tier-icons/silver_iii.png'
 import bronze from '../images/tier-icons/bronze_iii.png'
 import diamond from '../images/tier-icons/diamond_iii.png'
 import plat from '../images/tier-icons/platinum_iii.png'
-import UpdatProfile from '../components/UpdateProfileInfo'
+import UpdateProfile from '../components/UpdateProfileInfo'
 
 const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   const [rankInfo, setRankInfo] = useState({
