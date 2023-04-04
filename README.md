@@ -4,7 +4,7 @@
 
 
 
-![!DuoQue]()
+![!DuoQue](/home/rafiks1/ga_seir/projects/capstone/DuoQue/client/src/images/pngaaa.com-5200249.png)
 
 # Link up with your perfect Duo!
 
