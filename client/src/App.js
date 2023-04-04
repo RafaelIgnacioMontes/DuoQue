@@ -64,7 +64,7 @@ const App = () => {
     let response = await Client.get(
       `http://localhost:3001/server/summoner/FL/${summonerId}`
     )
-    console.log(response.data, 'APPJS')
+
     setFriendList(response.data.friends)
   }
 

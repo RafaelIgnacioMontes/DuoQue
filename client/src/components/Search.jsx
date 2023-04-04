@@ -66,7 +66,7 @@ const Search = ({ summoner }) => {
       </div>
     )
   }
-  console.log(searchQuery)
+
   const SearchFunc = async () => {
     let response = await axios.get(
       `http://localhost:3001/server/summoner/summoner/${searchQuery}`

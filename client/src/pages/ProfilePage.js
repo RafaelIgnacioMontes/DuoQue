@@ -24,7 +24,6 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
   }
 
   const [profileInfo, setProfileInfo] = useState(initialState)
-  console.log(summoner)
 
   const GetRankedInfo = async () => {
     if (summoner != false) {
