@@ -70,7 +70,7 @@ const App = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if (token) {
+    if (tken) {
       checkToken()
       getFriends()
     }
