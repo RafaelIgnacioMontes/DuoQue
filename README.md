@@ -40,7 +40,7 @@
 
 ###### Home
 
-### ![Home Page]()
+### ![Home Page](https://media.discordapp.net/attachments/1075524186853867702/1092867619251564644/image.png?width=1336&height=644)
 
 ###### Summoner Profile
 
