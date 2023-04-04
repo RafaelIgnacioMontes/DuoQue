@@ -24,11 +24,14 @@ const SignIn = ({ setSummoner, GetNewSummonerInfo, summoner }) => {
   }
   return (
     <div className="signinpage">
+      <div className="signinheaders">
+        <h1 className="signinheader">Sign In</h1>
+      </div>
       <form className="signinform" onSubmit={handleSubmit}>
-        <h1>Sign In</h1>
         <div className="inputdiv">
           <label htmlFor="email">Email</label>
           <input
+            className="inputarea"
             onChange={handleChange}
             name="email"
             type="email"
@@ -39,6 +42,7 @@ const SignIn = ({ setSummoner, GetNewSummonerInfo, summoner }) => {
         <div className="inputdiv">
           <label htmlFor="password">Password</label>
           <input
+            className="inputarea"
             onChange={handleChange}
             type="password"
             name="password"
