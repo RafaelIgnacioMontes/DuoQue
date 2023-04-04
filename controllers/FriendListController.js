@@ -33,7 +33,7 @@ const getAllLists = async (req, res) => {
     const response = await FriendList.findAll({
       where: { summonerId: req.params.summoner_id }
     })
-    res.send(response)
+    res.send(response[0])
   } catch (error) {
     throw error
   }

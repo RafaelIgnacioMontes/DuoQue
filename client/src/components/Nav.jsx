@@ -4,23 +4,29 @@ const Nav = ({ summoner, handleLogOut }) => {
   let summonerOptions
   if (summoner) {
     summonerOptions = (
-      <div className="greaterdivnav">
-        <div className="logo">
-          <Link to="/">
-            <img className="logonosummoner" src={tristana} alt="duoqlogo" />
-          </Link>
+      <div className="granddaddy">
+        <div className="greaterdivnav">
+          <div className="logodad">
+            <div className="logo">
+              <Link to="/Home">
+                <img className="logonosummoner" src={tristana} alt="duoqlogo" />
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="nonlogodivnavparent">
-          <div className="nonlogodivnav">
-            <Link to="/ProfilePage" className="navelements">
-              Profile
-            </Link>
-            <Link to="/Home" className="navelements">
-              Home
-            </Link>
-            <Link className="navelements" to="/" onClick={handleLogOut}>
-              LogOut
-            </Link>
+        <div className="test">
+          <div className="nonlogodivnavparent">
+            <div className="nonlogodivnav">
+              <Link to="/ProfilePage" className="navelements">
+                Profile
+              </Link>
+              <Link to="/Home" className="navelements">
+                Home
+              </Link>
+              <Link className="navelements" to="/" onClick={handleLogOut}>
+                LogOut
+              </Link>
+            </div>
           </div>
         </div>
       </div>

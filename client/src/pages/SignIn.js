@@ -19,7 +19,6 @@ const SignIn = ({ setSummoner, GetNewSummonerInfo, summoner }) => {
     const payload = await SignInSummoner(formValues)
     setFormValues(initialState)
     setSummoner(payload)
-
     await GetNewSummonerInfo(payload)
     navigate('/Home')
   }

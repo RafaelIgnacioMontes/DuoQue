@@ -27,7 +27,7 @@ const ProfilePage = ({ summoner, GetSummonerProfile, summonerProfile }) => {
       const info = await axios.put(
         `http://localhost:3001/server/riot/${summoner.summonerId}/update/rank/${summoner.id}`
       )
-      setRankInfo(info)
+      setRankInfo(info.data)
     }
   }
   // const GetRankFromApi = async () => {

@@ -11,9 +11,9 @@ import './App.css'
 import ProfilePage from './pages/ProfilePage'
 import UpdateProfile from './components/UpdateProfileInfo'
 import EditProfile from './components/EditProfile'
+import FriendList from './components/FriendList'
 
 const App = () => {
-  let navigate = useNavigate()
   const [summoner, setSummoner] = useState(null)
 
   const [extendedSummonerInfo, setExtendedSummonerInfo] = useState({
@@ -34,7 +34,7 @@ const App = () => {
   const handleLogOut = () => {
     setSummoner(null)
 
-    localStorage.clear('token')
+    localStorage.clear('token', 'summonerId')
   }
 
   const checkToken = async () => {
@@ -54,21 +54,24 @@ const App = () => {
     const response = await axios.get(
       `http://localhost:3001/server/profileinfo/info/${summoner.id}`
     )
-    console.log(response)
+
     setSummonerProfile(response.data)
   }
-  const [friendList, setFriendList] = useState()
+  const [friendList, setFriendList] = useState([])
 
   const getFriends = async () => {
-    let response = Client.get(
-      `http://localhost:3001/server/friendlist/all/${summoner.id}`
+    let summonerId = localStorage.getItem('summonerId')
+    let response = await Client.get(
+      `http://localhost:3001/server/summoner/FL/${summonerId}`
     )
-    console.log(response)
+    console.log(response.data, 'APPJS')
+    setFriendList(response.data.friends)
   }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
+      console.log('gettingFriends')
       checkToken()
       getFriends()
     }
@@ -101,13 +104,17 @@ const App = () => {
               />
             }
           />
+
           <Route
             element={<UpdateProfile GetSummonerProfile={GetSummonerProfile} />}
           />
           <Route
             element={<EditProfile GetNewSummoneProfile={GetSummonerProfile} />}
           />
-          <Route path="/Home" element={<Home />} />
+          <Route
+            path="/Home"
+            element={<Home summoner={summoner} friendList={friendList} />}
+          />
         </Routes>
       </main>
     </div>

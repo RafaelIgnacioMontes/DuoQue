@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+header {
+  background-color: black;
+}
 body {
   margin: 0;
   background-color: rgb(6, 29, 56);
@@ -19,10 +22,67 @@ body {
   display: flex;
   justify-content: center;
 }
-
+.level {
+  font-size: small;
+}
+.test {
+  display: flex;
+}
+.granddaddy {
+  display: flex;
+}
+.tier {
+  font-size: smaller;
+}
+.homepapa {
+  display: flex;
+}
 .logonosummoner {
   height: 4vw;
   padding-left: 10px;
+}
+.greaterHomeDiv {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 100px;
+}
+.searchbar {
+  width: 300px;
+  border-radius: 10px;
+}
+.searchBarGreater {
+  display: flex;
+}
+.friendListDad {
+  display: flex;
+}
+.bigdaddy {
+  display: flex;
+  flex-direction: column;
+}
+.logodad {
+  display: flex;
+  justify-content: left;
+}
+.Friends {
+  display: flex;
+  flex-direction: column;
+  border-color: gold;
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  padding: 5px;
+  margin-right: 10px;
+}
+.greaterFriendList {
+  display: flex;
+}
+.title {
+  border-bottom-style: double;
+  border-bottom: black;
+  border-width: 3px;
+  border-style: double;
 }
 .logo {
   height: 4vw;
@@ -36,8 +96,8 @@ body {
 }
 .nonlogodivnav {
   display: flex;
-  flex-direction: column;
-  align-items: right;
+
+  justify-content: right;
 }
 .navelements {
   display: flex;
@@ -49,7 +109,7 @@ body {
   width: 100%;
   height: 4vw;
   display: flex;
-  justify-content: right;
+  justify-content: left;
 }
 
 nav {

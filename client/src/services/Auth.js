@@ -5,6 +5,7 @@ export const SignInSummoner = async (data) => {
     const res = await Client.post('/server/auth/login', data)
     // Set the current signed in Summoners token to localStorage
     localStorage.setItem('token', res.data.token)
+    localStorage.setItem('summonerId', res.data.summoner.id)
     return res.data.summoner
   } catch (error) {
     throw error

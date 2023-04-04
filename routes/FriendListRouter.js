@@ -15,6 +15,6 @@ Router.delete(
   controller.deleteFriend
 )
 
-Router.get('/all/:summonerId', controller.getAllLists)
+Router.get('/all/:summoner_id', controller.getAllLists)
 
 module.exports = Router
