@@ -71,7 +71,7 @@ const Search = ({ summoner }) => {
     let response = await axios.get(
       `http://localhost:3001/server/summoner/summoner/${searchQuery}`
     )
-    console.log(response.data[0])
+
     setSearchResults(response.data[0])
   }
 
