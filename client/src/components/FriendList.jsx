@@ -9,6 +9,8 @@ const FriendList = ({ summoner, friendList }) => {
     await Client.delete(
       `http://localhost:3001/server/friendlist/delete/${summonerId}/friend/${e.target.id}`
     )
+    alert('Friend Deleted')
+    window.location.reload()
   }
 
   return (
