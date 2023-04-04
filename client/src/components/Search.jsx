@@ -19,6 +19,8 @@ const Search = ({ summoner }) => {
     await Client.post(
       `http://localhost:3001/server/friendlist/addFriend/${summonerId}/friend/${searchResults.id}`
     )
+    alert('Friend Added')
+    window.location.reload()
   }
   let tiery
   if (searchResults.tier === 'GOLD') {
