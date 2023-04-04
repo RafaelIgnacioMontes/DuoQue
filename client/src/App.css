@@ -136,6 +136,9 @@ body {
 label {
   margin-right: 10px;
 }
+.inputarea {
+  border-radius: 5px;
+}
 .signinform {
   display: flex;
   flex-direction: column;
@@ -147,6 +150,12 @@ label {
   border-style: groove;
   padding: 20px;
   border-radius: 5px;
+}
+.signindiv {
+  display: flex;
+
+  align-items: center;
+  margin-right: 50px;
 }
 .singinheaders {
   display: flex;
